@@ -31,6 +31,16 @@ import {
   FaStar
 } from 'react-icons/fa';
 
+// Import images so Vite bundles them for production
+import lspdImg from '../assets/lspd.jpg';
+import fbiImg from '../assets/fbi.jpg';
+import nationalguardImg from '../assets/nationalguard.png';
+import taxiImg from '../assets/taxi.png';
+import ballasImg from '../assets/ballas.jpg';
+import groveImg from '../assets/grove.jpg';
+import paramedicsImg from '../assets/paramedics.jpg';
+import firedepartamentImg from '../assets/firedepartament.jpg';
+
 const Factions = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedType, setSelectedType] = useState('all');
@@ -41,7 +51,7 @@ const Factions = () => {
       id: 1,
       name: 'Los Santos Police Department',
       type: 'Government',
-      photo: '/src/assets/lspd.jpg',
+      photo: lspdImg,
       description: 'The primary law enforcement agency for Los Santos, dedicated to maintaining peace and order throughout the city.',
       members: 87,
       complaints: 12,
@@ -56,7 +66,7 @@ const Factions = () => {
       id: 2,
       name: 'Federal Bureau of Investigation',
       type: 'Government',
-      photo: '/src/assets/fbi.jpg',
+      photo: fbiImg,
       description: 'Elite federal law enforcement agency handling high-priority crimes and national security matters.',
       members: 45,
       complaints: 3,
@@ -71,7 +81,7 @@ const Factions = () => {
       id: 3,
       name: 'Los Santos National Guard',
       type: 'Military',
-      photo: '/src/assets/nationalguard.png',
+      photo: nationalguardImg,
       description: 'Military reserve force responsible for homeland security and emergency response operations.',
       members: 62,
       complaints: 5,
@@ -86,7 +96,7 @@ const Factions = () => {
       id: 4,
       name: 'Taxi Los Santos',
       type: 'Commercial',
-      photo: '/src/assets/taxi.png',
+      photo: taxiImg,
       description: 'Premier taxi service providing reliable transportation throughout Los Santos and surrounding areas.',
       members: 34,
       complaints: 8,
@@ -101,7 +111,7 @@ const Factions = () => {
       id: 5,
       name: 'Ballas',
       type: 'Gang',
-      photo: '/src/assets/ballas.jpg',
+      photo: ballasImg,
       description: 'Notorious street gang controlling territory in South Los Santos, known for their purple colors.',
       members: 28,
       complaints: 45,
@@ -116,7 +126,7 @@ const Factions = () => {
       id: 6,
       name: 'Grove Street Families',
       type: 'Gang',
-      photo: '/src/assets/grove.jpg',
+      photo: groveImg,
       description: 'Historic street gang from Grove Street, rivals of the Ballas, known for their green colors.',
       members: 31,
       complaints: 38,
@@ -131,7 +141,7 @@ const Factions = () => {
       id: 7,
       name: 'Los Santos Medical Center',
       type: 'Medical',
-      photo: '/src/assets/paramedics.jpg',
+      photo: paramedicsImg,
       description: 'Primary medical facility providing emergency healthcare services and medical support to the city.',
       members: 52,
       complaints: 2,
@@ -146,7 +156,7 @@ const Factions = () => {
       id: 8,
       name: 'Los Santos Fire Department',
       type: 'Emergency',
-      photo: '/src/assets/firedepartament.jpg',
+      photo: firedepartamentImg,
       description: 'Fire and rescue service protecting Los Santos from fires, accidents, and emergency situations.',
       members: 41,
       complaints: 1,
