@@ -1,13 +1,5 @@
 import React from "react";
-import { GiHamburgerMenu } from "react-icons/gi";
-import { IoPeopleSharp } from "react-icons/io5";
-import { FaPeopleGroup } from "react-icons/fa6";
-import { FaWikipediaW } from "react-icons/fa";
-import { GoAlertFill } from "react-icons/go";
-import { FaTicketAlt } from "react-icons/fa";
-import { FaShoppingBag } from "react-icons/fa";
-import { MdUpdate } from "react-icons/md";
-import { IoMdHelp } from "react-icons/io";
+import { useNavigate } from "react-router-dom";
 
 import {
   Button,
@@ -17,20 +9,28 @@ import {
   Flex,
   Box,
   Drawer,
+  CloseButton,
 } from "@chakra-ui/react";
 
 function Menu() {
   const [isOpen, setIsOpen] = React.useState(false);
+  const navigate = useNavigate();
+
+  const handleNavigation = (path) => {
+    navigate(path);
+    setIsOpen(false);
+  };
 
   return (
     <Drawer.Root open={isOpen} onOpenChange={({ open }) => setIsOpen(open)} placement="start" size="sm">
       <Drawer.Trigger asChild>
         <Button
           borderRadius="10px"
-          size="sm"
+          size={{ base: "md", md: "sm" }}
           variant="ghost"
+          aria-label="Open menu"
         >
-          <Box as={GiHamburgerMenu} boxSize="4" />
+          <Text fontSize={{ base: "xl", md: "lg" }}>☰</Text>
         </Button>
       </Drawer.Trigger>
       
@@ -43,19 +43,22 @@ function Menu() {
                 Menu
               </Text>
             </Drawer.Title>
-            <Drawer.CloseTrigger />
+            <Drawer.CloseTrigger asChild>
+              <CloseButton size="sm" aria-label="Close menu" />
+            </Drawer.CloseTrigger>
           </Drawer.Header>
 
           <Drawer.Body p="4">
             <VStack align="stretch" gap="2">
-              <MenuItem icon={<FaWikipediaW />} label="Wikipedia" onClick={() => setIsOpen(false)} />
-              <MenuItem icon={<IoPeopleSharp />} label="Staff" onClick={() => setIsOpen(false)} />
-              <MenuItem icon={<GoAlertFill />} label="Complaints" count={10} onClick={() => setIsOpen(false)} />
-              <MenuItem icon={<FaPeopleGroup />} label="Factions" count={20} onClick={() => setIsOpen(false)} />
-              <MenuItem icon={<FaTicketAlt />} label="Tickets" count={1000} onClick={() => setIsOpen(false)} />
-              <MenuItem icon={<FaShoppingBag />} label="Shop" onClick={() => setIsOpen(false)} />
-              <MenuItem icon={<MdUpdate />} label="Updates" onClick={() => setIsOpen(false)} />
-              <MenuItem icon={<IoMdHelp />} label="Help" onClick={() => setIsOpen(false)} />
+              <MenuItem icon="📊" label="Dashboard" onClick={() => handleNavigation('/')} />
+              <MenuItem icon="👥" label="Staff" onClick={() => handleNavigation('/staff')} />
+              <MenuItem icon="⚠️" label="Complaints" count={10} onClick={() => handleNavigation('/complaints')} />
+              <MenuItem icon="🛡️" label="Factions" count={20} onClick={() => handleNavigation('/factions')} />
+              <MenuItem icon="📖" label="Wikipedia" onClick={() => setIsOpen(false)} />
+              <MenuItem icon="🎟️" label="Tickets" count={1000} onClick={() => setIsOpen(false)} />
+              <MenuItem icon="🛍️" label="Shop" onClick={() => setIsOpen(false)} />
+              <MenuItem icon="🔄" label="Updates" onClick={() => setIsOpen(false)} />
+              <MenuItem icon="❓" label="Help" onClick={() => setIsOpen(false)} />
             </VStack>
           </Drawer.Body>
         </Drawer.Content>
@@ -78,8 +81,8 @@ function MenuItem({ icon, label, count, onClick }) {
       onClick={onClick}
     >
       <HStack gap="2">
-        <Box as="span">{icon}</Box>
-        <Text>{label}</Text>
+        <Text as="span" fontSize="lg">{icon}</Text>
+        <Text color="white">{label}</Text>
       </HStack>
       {typeof count !== "undefined" && (
         <Flex
